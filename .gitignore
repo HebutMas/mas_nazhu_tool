@@ -1,0 +1,25 @@
+# 含 NapCat 访问令牌，可操作用户账号 —— 绝不提交
+config.json
+
+# 写操作审计日志
+audit.log
+audit.test.log
+
+# 导出的群成员名单（含个人信息）
+*.xlsx
+
+# 运行期日志
+*.log
+calls.log
+napcat-console*.log
+
+# 本地解压出来的 NapCat 安装目录（含登录态与 token）。
+# 注意锚定到根目录：Windows 上 git 默认 core.ignorecase=true，
+# 写成不带斜杠前缀的 "NapCat/" 会连 third_party/napcat/ 一起忽略掉，
+# 导致下面要分发的官方发布包进不了仓库且没有任何提示。
+/NapCat/
+/napcat/
+
+# 但 third_party/napcat/ 里的官方发布包与许可证必须提交
+!third_party/napcat/
+!third_party/napcat/**

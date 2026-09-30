@@ -1,0 +1,18 @@
+# 换行策略：默认按文本处理并在仓库内统一为 LF
+* text=auto eol=lf
+
+# Windows 批处理必须原样保存 CRLF 字节，所以用 -text（禁止换行规范化）。
+#
+# 注意不要写成 "text eol=crlf"：那只保证 git clone 检出时转成 CRLF，
+# 而 GitHub 网页上的 "Download ZIP" 是直接导出仓库内容、不做任何转换的，
+# 拿到的仍会是 LF，cmd 解析出错，表现为"双击没反应"。
+# 用 -text 把 CRLF 字节直接存进仓库，两条路径就都对了。
+# 后面跟的 diff 只是让它仍能按文本方式显示差异。
+*.bat -text diff
+*.cmd -text diff
+
+# 二进制文件不做任何换行转换
+*.zip binary
+*.dll binary
+*.exe binary
+*.png binary
